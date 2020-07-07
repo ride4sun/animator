@@ -1,7 +1,7 @@
 import 'dart:math';
-import 'package:flutter/material.dart';
 
 import 'package:animator/animator.dart';
+import 'package:flutter/material.dart';
 
 class AnimationWithAnimatorKey extends StatelessWidget {
   @override
@@ -30,20 +30,20 @@ class MyAnimation extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text('Start Animation and you can not restart it until it ends'),
-            RaisedButton(
-              child: Text("Animate"),
-              onPressed: () => animatorKey.triggerAnimation(),
-            ),
-            SizedBox(height: 5),
-            Text('Start Animation and restart it if it is running'),
-            RaisedButton(
-              child: Text("restart animation"),
-              onPressed: () => animatorKey.triggerAnimation(restart: true),
-            ),
-            SizedBox(height: 5),
-            Text('Change animation setting and restart it'),
-            Text('Curve is changed from linear to bounceIn'),
+//            Text('Start Animation and you can not restart it until it ends'),
+//            RaisedButton(
+//              child: Text("Animate"),
+//              onPressed: () => animatorKey.triggerAnimation(),
+//            ),
+//            SizedBox(height: 5),
+//            Text('Start Animation and restart it if it is running'),
+//            RaisedButton(
+//              child: Text("restart animation"),
+//              onPressed: () => animatorKey.triggerAnimation(restart: true),
+//            ),
+//            SizedBox(height: 5),
+//            Text('Change animation setting and restart it'),
+//            Text('Curve is changed from linear to bounceIn'),
             RaisedButton(
               child: Text("reset and restart animation using AnimatorKey"),
               onPressed: () => animatorKey
