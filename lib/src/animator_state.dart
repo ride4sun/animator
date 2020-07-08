@@ -165,15 +165,17 @@ class AnimatorStateImp<T> extends StatesRebuilder<T>
       controller?.reset();
       _skipDismissStatus = false;
     }
-    if (_animation.status == AnimationStatus.dismissed) {
-      controller.forward();
-    } else if (_animation.status == AnimationStatus.completed) {
-      if (!_isCycle) {
-        controller
-          ..reset()
-          ..forward();
-      } else {
-        controller.reverse();
+    if (_animation != null) {
+      if (_animation.status == AnimationStatus.dismissed) {
+        controller.forward();
+      } else if (_animation.status == AnimationStatus.completed) {
+        if (!_isCycle) {
+          controller
+            ..reset()
+            ..forward();
+        } else {
+          controller.reverse();
+        }
       }
     }
   }

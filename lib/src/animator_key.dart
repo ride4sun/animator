@@ -113,16 +113,18 @@ class AnimatorKeyImp<T> extends AnimatorStateImp<T> implements AnimatorKey<T> {
     int cycles,
     bool autoStart = true,
   }) {
-    callbackRefreshAnim(
-      tween: tween,
-      tweenMap: tweenMap,
-      duration: duration,
-      curve: curve,
-      repeats: repeats,
-      cycles: cycles,
-    );
-    if (autoStart) {
-      triggerAnimation();
+    if (callbackRefreshAnim != null) {
+      callbackRefreshAnim(
+        tween: tween,
+        tweenMap: tweenMap,
+        duration: duration,
+        curve: curve,
+        repeats: repeats,
+        cycles: cycles,
+      );
+      if (autoStart) {
+        triggerAnimation();
+      }
     }
   }
 

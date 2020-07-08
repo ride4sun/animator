@@ -3,7 +3,27 @@ import 'dart:math';
 import 'package:animator/animator.dart';
 import 'package:flutter/material.dart';
 
-class AnimationWithAnimatorKey extends StatelessWidget {
+import 'margins.dart';
+import 'my_bloc.dart';
+import 'my_bloc_provider.dart';
+import 'progress_widget.dart';
+
+class AnimationWithAnimatorKey extends StatefulWidget {
+  @override
+  _AnimationWithAnimatorKeyState createState() =>
+      _AnimationWithAnimatorKeyState();
+}
+
+MyBloc _myBloc;
+
+class _AnimationWithAnimatorKeyState extends State<AnimationWithAnimatorKey> {
+  @override
+  void initState() {
+    super.initState();
+    _myBloc = new MyBloc();
+    _myBloc.init();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -12,7 +32,10 @@ class AnimationWithAnimatorKey extends StatelessWidget {
       ),
       body: Padding(
         padding: EdgeInsets.all(20),
-        child: MyAnimation(),
+        child: MyBlocProvider(
+          bloc: _myBloc,
+          child: MyAnimation(),
+        ),
       ),
     );
   }
@@ -30,6 +53,22 @@ class MyAnimation extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            Margins(
+              child: Container(
+                width: 300,
+                height: 40,
+                child: ProgressWidget(
+                  streamValue: MyBlocProvider.of(context).progress,
+                  curve: Curves.bounceOut,
+                  durationCallback: () {
+                    Random random = new Random();
+                    return Duration(milliseconds: random.nextInt(400) + 1000);
+                  },
+                ),
+              ),
+              all: 50,
+            ),
+
 //            Text('Start Animation and you can not restart it until it ends'),
 //            RaisedButton(
 //              child: Text("Animate"),

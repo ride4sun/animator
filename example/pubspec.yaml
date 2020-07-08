@@ -21,6 +21,8 @@ dependencies:
     sdk: flutter
   animator:
     path: ../
+  logging: ^0.11.3+2
+  rxdart: ^0.24.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
