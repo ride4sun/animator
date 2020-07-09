@@ -131,10 +131,14 @@ class AnimatorStateImp<T> extends StatesRebuilder<T>
   }
 
   void _addAnimationListeners() {
-    _animation.addListener(rebuildStates);
+    _animation.addListener(_rebuildStateInt);
     if (animator.customListener != null) {
       _animation.addListener(() => animator.customListener(this));
     }
+  }
+
+  _rebuildStateInt() {
+    /*if (hasObservers)*/ rebuildStates();
   }
 
   void _setRepeatCount(int repeats, int cycles) {
